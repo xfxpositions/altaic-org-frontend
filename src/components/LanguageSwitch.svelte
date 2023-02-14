@@ -6,17 +6,20 @@
 		DialogDescription,
 		Transition
 	} from '@rgossiaux/svelte-headlessui';
+	import Fa from 'svelte-fa';
+	import faFlag from '@fortawesome/free-solid-svg-icons/faFlag';
 	let isOpen = false;
 </script>
 
-<div>
+<div class="">
 	<button
 		on:click={() => {
 			isOpen = !isOpen;
 		}}
 		class="transition-all duration-300 ease-in-out hover:bg-solarized-light p-2 rounded-md border-2 border-zinc-200"
-		>Change Language</button
-	>
+		>Change Language
+		<Fa icon={faFlag} /> Flag
+	</button>
 
 	<Transition
 		show={isOpen}
@@ -28,12 +31,12 @@
 		leaveTo="transform scale-95 opacity-0"
 	>
 		<Dialog
-			class="w-full m-auto max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+			class="w-full  backdrop-blur-[3px] bg-opacity-90 m-auto max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
 		>
 			<DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">
 				Change The Language
 			</DialogTitle>
-			<div class="flex justify-center items-center">
+			<div class="flex justify-center mt-50 items-center">
 				<div class="mt-4 text-center">
 					<p class="text-sm text-gray-500">Avaible Languages</p>
 					<div class="flex gap-5">
@@ -59,7 +62,7 @@
 						isOpen = false;
 					}}
 				>
-					Got it, thanks!
+					Change!
 				</button>
 			</div>
 		</Dialog>

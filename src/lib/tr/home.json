@@ -1,0 +1,14 @@
+{
+	"mainTitle": "altaic.org'a hoşgeldiniz",
+	"box1": {
+		"title": "Bu da ne? ?",
+		"main": "Altaic.org Altay Dil ailesi hakkında bir websitedir. Şu anda website geliştirme aşamasındadır."
+	},
+	"box2": {
+		"title": "Altay Dil Ailesi nedir?",
+		"main": "Altaic (/ælˈteɪ.ɪk/) Türk, Moğol ve Tungus dil ailelerini ve muhtemelen Japon ve Kore dillerini de içerecek tartışmalı bir dil ailesidir."
+	},
+	"latestPost": {
+		"title": "Son Gönderiler"
+	}
+}
