@@ -1,13 +1,11 @@
-<div class="">
+<div
+	class="bg-slate-100  group card rounded-md shadow-xl py-2 px-4 md:py-5 md:px-10 bg-opacity-75 backdrop-blur-[2px]"
+>
+	<slot />
 	<div
-		class="ml-[25%] my-4 mx-1 shadow-md bg-opacity-50 bg-zinc-100 p-10 lg:p-6 md:p-12 max-w-[50%] backdrop-blur-[2px] rounded-lg"
+		class="bg-sky-300 flex justify-center items-center transition-all duration-300 ease-in-out group-hover:translate-x-2 opacity-0 group-hover:opacity-100"
 	>
-		<div class="card p-4">
-			<div class="bg-solarized-green">
-				<slot />
-			</div>
-			<div class="p-2 bg-sky-400 flex justify-center items-center">Go</div>
-		</div>
+		GO
 	</div>
 </div>
 

@@ -40,11 +40,15 @@
 		</div>
 
 		<h2 class="font-bold text-2xl">Latest Posts</h2>
-		{#each posts as post}
-			<Card>
-				<h2 class="text-xl">{post.title}</h2>
-				<p>{post.content}</p>
-			</Card>
-		{/each}
+		<div class="flex flex-col gap-5 mt-5">
+			{#each posts as post}
+				<Card>
+					<div>
+						<h2 class="text-xl">{post.title}</h2>
+						<p>{post.content}</p>
+					</div>
+				</Card>
+			{/each}
+		</div>
 	</div>
 </div>
