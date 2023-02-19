@@ -10,8 +10,20 @@
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
+<script>
+	if (localStorage.getItem('theme') == 'dark') {
+		document.documentElement.classList.toggle('dark');
+	}
+</script>
 <style>
-	body {
-		background-color: #f0e7db;
+	@media (prefers-color-scheme: dark) {
+		body {
+			background-color: #202023;
+		}
+	}
+	@media (prefers-color-scheme: light) {
+		body {
+			background-color: #f0e7db;
+		}
 	}
 </style>

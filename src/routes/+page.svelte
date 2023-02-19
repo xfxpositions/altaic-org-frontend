@@ -28,12 +28,14 @@
 	}
 </script>
 
-<div class="px-20 bg-solarized-light  flex flex-col items-center">
+<div class="px-20 bg-solarized-light dark:bg-[#202023]  flex flex-col items-center">
 	<div class="text-center mt-12 ">
 		<h1 class="text-3xl font-bold underline">{$t('home.mainTitle')}</h1>
 		<h1 class="text-3xl font-bold underline">Welcome to altaic.org</h1>
 
-		<div class="shadow-md p-4 mx-4 bg-zinc-100 my-4 bg-opacity-50 backdrop-blur-[2px]">
+		<div
+			class="shadow-md p-4 mx-4 bg-zinc-100 dark:bg-zinc-800 my-4 bg-opacity-50 backdrop-blur-[2px]"
+		>
 			<h2 class="text-xl">What's that?</h2>
 			<p class="ml-3">
 				Altaic.org is a website based about Altaic Language Family.
@@ -41,7 +43,9 @@
 				Currently the website is under heavy development.
 			</p>
 		</div>
-		<div class="shadow-md p-4 mx-4 bg-zinc-100 my-4 bg-opacity-50 backdrop-blur-[2px]">
+		<div
+			class="shadow-md p-4 mx-4 bg-zinc-100 dark:bg-zinc-800 my-4 bg-opacity-50 backdrop-blur-[2px]"
+		>
 			<h2 class="text-xl">What is Altaic Language Family?</h2>
 			<p class="ml-3">
 				Altaic (/ælˈteɪ.ɪk/) is a controversial proposed language family that would include the

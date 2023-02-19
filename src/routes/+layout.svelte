@@ -11,7 +11,7 @@
 	};
 </script>
 
-<div class="bg-solarized-light">
+<div class="bg-solarized-light dark:text-white dark:bg-solarized-dark ">
 	<Navbar />
 	<slot />
 	<Footer />
