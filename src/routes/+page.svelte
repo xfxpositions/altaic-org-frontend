@@ -3,6 +3,9 @@
 	import { onMount } from 'svelte';
 	import axios from 'axios';
 	import Card from '../components/Card.svelte';
+	import { locale, loadTranslations } from '../lib/index.js';
+	let currentLocale = locale.get();
+	console.log(currentLocale);
 	/**
 	 * @type {any[]}
 	 */
@@ -15,10 +18,18 @@
 	});
 	let a = locales.get();
 	console.log(a);
+	/**
+	 * @param {Date} date
+	 */
+	function dateOfPost(date) {
+		var options = { year: 'numeric', month: 'long', day: 'numeric' };
+		// @ts-ignore
+		return date.toLocaleDateString('en-EN', options);
+	}
 </script>
 
-<div class="px-20 bg-solarized-light h-screen flex flex-col items-center">
-	<div class="text-center mt-24 ">
+<div class="px-20 bg-solarized-light  flex flex-col items-center">
+	<div class="text-center mt-12 ">
 		<h1 class="text-3xl font-bold underline">{$t('home.mainTitle')}</h1>
 		<h1 class="text-3xl font-bold underline">Welcome to altaic.org</h1>
 
@@ -39,13 +50,20 @@
 			</p>
 		</div>
 
-		<h2 class="font-bold text-2xl">Latest Posts</h2>
-		<div class="flex flex-col gap-5 mt-5">
+		<h2 class="font-bold text-2xl">Latest Articles</h2>
+		<div class="flex flex-col gap mt-5 gap-5">
 			{#each posts as post}
 				<Card>
-					<div>
-						<h2 class="text-xl">{post.title}</h2>
-						<p>{post.content}</p>
+					<div class="">
+						<div class="flex">
+							<span>by&nbsp</span>
+							<a href="#" class="underline font-semibold">{post.author}</a>
+						</div>
+						<h2 class="text-xl hover:underline cursor-pointer">{post.title}</h2>
+						<p class="hover:underline cursor-pointer">{post.content}</p>
+						<p class="text-start">
+							{dateOfPost(new Date(post.createdAt))}
+						</p>
 					</div>
 				</Card>
 			{/each}

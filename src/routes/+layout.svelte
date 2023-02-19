@@ -1,7 +1,7 @@
 <script context="module">
 	import Navbar from '../components/Navbar.svelte';
 	import '../app.css';
-
+	import Footer from '../components/Footer.svelte';
 	import { t, locales, locale, loadTranslations } from '../lib/index.js';
 	/** @type {import('@sveltejs/kit').Load} */
 	export const load = async () => {
@@ -11,7 +11,8 @@
 	};
 </script>
 
-<div class="bg-solarized-light h-screen ">
+<div class="bg-solarized-light">
 	<Navbar />
 	<slot />
+	<Footer />
 </div>
