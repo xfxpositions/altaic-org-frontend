@@ -5,7 +5,8 @@ module.exports = {
 		extend: {
 			colors: {
 				'solarized-light': '#f0e7db',
-				'solarized-green': '#859900'
+				'solarized-green': '#859900',
+				'solarized-dark': '#002b36'
 			}
 		}
 	},
