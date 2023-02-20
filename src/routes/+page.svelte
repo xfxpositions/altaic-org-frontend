@@ -1,11 +1,9 @@
 <script>
-	import { t, locales } from '../lib/index.js';
+	import { _ } from 'svelte-i18n';
+
 	import { onMount } from 'svelte';
 	import axios from 'axios';
 	import Card from '../components/Card.svelte';
-	import { locale, loadTranslations } from '../lib/index.js';
-	let currentLocale = locale.get();
-	console.log(currentLocale);
 	/**
 	 * @type {any[]}
 	 */
@@ -16,8 +14,6 @@
 			console.log(posts);
 		});
 	});
-	let a = locales.get();
-	console.log(a);
 	/**
 	 * @param {Date} date
 	 */
@@ -30,7 +26,7 @@
 
 <div class="px-20 bg-solarized-light dark:bg-[#202023]  flex flex-col items-center">
 	<div class="text-center mt-12 ">
-		<h1 class="text-3xl font-bold underline">{$t('home.mainTitle')}</h1>
+		<h1 class="text-3xl font-bold underline">{$_('greeting')}</h1>
 		<h1 class="text-3xl font-bold underline">Welcome to altaic.org</h1>
 
 		<div
@@ -61,7 +57,7 @@
 					<div class="">
 						<div class="flex">
 							<span>by&nbsp</span>
-							<a href="#" class="underline font-semibold">{post.author}</a>
+							<a class="underline font-semibold">{post.author}</a>
 						</div>
 						<h2 class="text-xl hover:underline cursor-pointer">{post.title}</h2>
 						<p class="hover:underline cursor-pointer">{post.content}</p>

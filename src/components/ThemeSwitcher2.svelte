@@ -26,11 +26,11 @@
 		}
 	}
 
-	import { Sun, Icon } from 'svelte-hero-icons';
+	import { Sun, Moon, Icon } from 'svelte-hero-icons';
 </script>
 
 <button
 	on:click={handleSwitchDarkMode}
 	class="transition-all duration-300 ease-in-out group hover:bg-solarized-light dark:text-solarized-light dark:hover:bg-solarized-dark dark:hover:text-solarized-light hover:text-black p-2 rounded-md border-2 border-zinc-200"
-	><Icon src={Sun} solid class=" h-6 w-6" /></button
+	><Icon src={darkMode ? Moon : Sun} solid class=" h-6 w-6" /></button
 >
