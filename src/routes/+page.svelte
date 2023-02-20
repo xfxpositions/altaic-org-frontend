@@ -54,7 +54,7 @@
 		<h2 class="font-bold text-2xl">
 			{$_('home.latestArticlesTitle')}
 		</h2>
-		<div class="flex flex-col gap mt-5 gap-5">
+		<div class="flex flex-col gap mt-5 gap-5 mb-7">
 			{#each posts as post}
 				<Card>
 					<div class="">

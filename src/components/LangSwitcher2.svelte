@@ -50,7 +50,7 @@
 	<div class="inset-0 flex items-center">
 		<button
 			on:click={openModal}
-			class="transition-all duration-300 ease-in-out hover:bg-solarized-light hover:text-black p-2 rounded-md border-2 border-zinc-200"
+			class="transition-all duration-300 ease-in-out hover:bg-solarized-light hover:text-black dark:hover:bg-solarized-dark dark:hover:text-solarized-light p-2 rounded-md border-2 border-zinc-200"
 			>Change Language</button
 		>
 	</div>
@@ -91,13 +91,13 @@
 									<p class="text-sm text-gray-500 dark:text-gray-200">Avaible Languages</p>
 									<div class="flex gap-2">
 										{#each avabileLanguages as language}
-											<div class="flex gap-5 mt-1">
+											<div class="flex gap-5 mt-1 p-2">
 												<!-- svelte-ignore a11y-click-events-have-key-events -->
 												<div
 													on:click={() => {
 														selectedLanguage = language;
 													}}
-													class="p-4 bg-opacity-50 cursor-pointer transition-all duration-200 bg-slate-200 ease-in-out hover:bg-slate-200 dark:hover:bg-slate-500 {selectedLanguage.name ==
+													class="p-4 bg-opacity-50 rounded-md cursor-pointer transition-all duration-200 bg-slate-200 ease-in-out hover:bg-slate-200 dark:hover:bg-slate-500 {selectedLanguage.name ==
 													language.name
 														? 'bg-opacity-90 bg-solarized-green hover:bg-solarized-green hover:bg-opacity-100'
 														: 'bg-slate-200'} shadow-lg bg-opacity-50 cursor-pointer transition-all duration-200  ease-in-out hover:bg-slate-200"

@@ -9,7 +9,6 @@
 	class="flex justify-center gap-4 shadow-md p-4 py-8 bg-zinc-100 dark:bg-zinc-700 my-4 bg-opacity-50 backdrop-blur-[2px]"
 >
 	<LangSwitcher2 />
-	<!-- <ThemeSwitcher /> -->
 	<ThemeSwitcher2 />
 	<VisitorCounter />
 </nav>
