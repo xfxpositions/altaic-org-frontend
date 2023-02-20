@@ -1,3 +1,14 @@
 {
-	"greeting": "Merhaba!"
+	"greeting": "Merhaba!",
+	"home.greeting": "altaic.org'a hoşgeldiniz!",
+	"box1": {
+		"title": "Bu da ne?",
+		"content1": "Altaic.org Altay Dil ailesi hakkında bir web sayfasıdır.",
+		"content2": "Şu anda site geliştirme aşamasındadır."
+	},
+	"box2": {
+		"title": "Altay Dil Ailesi nedir?",
+		"content1": "Altay (/ælˈteɪ.ɪk/), Türk, Moğol ve Tungus dil ailelerini ve muhtemelen Japon ve Kore dillerini de içerecek tartışmalı bir önerilen dil ailesidir."
+	},
+	"home.latestArticlesTitle": "Son Gönderiler"
 }

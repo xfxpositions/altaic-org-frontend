@@ -24,17 +24,22 @@
 		{ name: 'Turkish', code: 'tr' },
 		{ name: 'English', code: 'en' }
 	];
+
 	let selectedLanguage = {
 		name: '',
 		code: ''
 	};
-
+	if (browser) {
+		// @ts-ignore
+		selectedLanguage.name = localStorage.getItem('lang-name')?.toString();
+	}
 	/**
 	 * @param {string | null | undefined} language
 	 */
 	function changeLang(language) {
 		if (browser) {
 			localStorage.setItem('lang', selectedLanguage.code);
+			localStorage.setItem('lang-name', selectedLanguage.name);
 		}
 		locale.set(language);
 		locale.subscribe(() => console.log('locale change'));
