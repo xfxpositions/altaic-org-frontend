@@ -1,16 +1,18 @@
 <script>
-	import { _ } from 'svelte-i18n';
-
-	import { onMount } from 'svelte';
+	import { locale, _ } from 'svelte-i18n';
+	import { browser } from '$app/environment';
+	import { onMount, onDestroy } from 'svelte';
 	import axios from 'axios';
 	import Card from '../components/Card.svelte';
+	export let localChanged;
+
 	/**
 	 * @type {any[]}
 	 */
 	let posts = [];
 	onMount(async () => {
 		axios.get('http://localhost:7881/').then((response) => {
-			posts = response.data.result;
+			posts = response.data.result.reverse();
 			console.log(posts);
 		});
 	});
@@ -18,10 +20,13 @@
 	 * @param {Date} date
 	 */
 	function dateOfPost(date) {
-		var options = { year: 'numeric', month: 'long', day: 'numeric' };
-		// @ts-ignore
+		if (browser) {
+			var options = { year: 'numeric', month: 'long', day: 'numeric' };
+			let lang = localStorage.getItem('lang');
 
-		return date.toLocaleDateString('en-EN', options);
+			// @ts-ignore
+			return date.toLocaleDateString(lang || 'en', options);
+		}
 	}
 </script>
 
@@ -56,14 +61,16 @@
 		</h2>
 		<div class="flex flex-col gap mt-5 gap-5 mb-7">
 			{#each posts as post}
-				<Card>
+				<Card author={post.author} title={post.title} id={post._id}>
 					<div class="">
 						<div class="flex">
 							<span>by&nbsp</span>
 							<a class="underline font-semibold">{post.author}</a>
 						</div>
 						<h2 class="text-xl hover:underline cursor-pointer">{post.title}</h2>
-						<p class="hover:underline cursor-pointer">{post.content}</p>
+						<p class="hover:underline cursor-pointer">
+							{post.content.substring(0, 200)}...
+						</p>
 						<p class="text-start">
 							{dateOfPost(new Date(post.createdAt))}
 						</p>

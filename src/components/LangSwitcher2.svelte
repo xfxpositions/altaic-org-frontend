@@ -33,6 +33,7 @@
 		// @ts-ignore
 		selectedLanguage.name = localStorage.getItem('lang-name')?.toString();
 	}
+
 	/**
 	 * @param {string | null | undefined} language
 	 */

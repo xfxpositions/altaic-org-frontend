@@ -14,13 +14,9 @@
 		await waitLocale();
 	};
 	load();
-	function change() {
-		locale.set('fr');
-		locale.subscribe(() => console.log('locale change'));
-	}
 </script>
 
-<div class="bg-solarized-light dark:text-white dark:bg-solarized-dark ">
+<div class="bg-solarized-light dark:text-white dark:bg-solarized-dark min-h-screen">
 	<Navbar />
 	<slot />
 	<Footer />
