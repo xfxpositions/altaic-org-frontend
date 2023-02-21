@@ -1,7 +1,10 @@
 <script>
+	// @ts-nocheck
+
 	import { locale, _ } from 'svelte-i18n';
 	import { browser } from '$app/environment';
 	import { onMount, onDestroy } from 'svelte';
+	import { Transition } from '@rgossiaux/svelte-headlessui';
 	import axios from 'axios';
 	import Card from '../components/Card.svelte';
 	export let localChanged;
@@ -9,11 +12,20 @@
 	/**
 	 * @type {any[]}
 	 */
-	let posts = [];
+	let posts = null;
+	let unsubscribe;
+	let langChanged = false;
 	onMount(async () => {
-		axios.get('http://localhost:7881/').then((response) => {
+		unsubscribe = locale.subscribe((value) => {
+			console.log('Language changed');
+			langChanged = true;
+		});
+		axios.get('http://localhost:7881/multifetch?limit=3').then((response) => {
 			posts = response.data.result.reverse();
 			console.log(posts);
+		});
+		onDestroy(() => {
+			unsubscribe();
 		});
 	});
 	/**
@@ -25,6 +37,8 @@
 			let lang = localStorage.getItem('lang');
 
 			// @ts-ignore
+			langChanged = false;
+
 			return date.toLocaleDateString(lang || 'en', options);
 		}
 	}
@@ -59,24 +73,44 @@
 		<h2 class="font-bold text-2xl">
 			{$_('home.latestArticlesTitle')}
 		</h2>
-		<div class="flex flex-col gap mt-5 gap-5 mb-7">
-			{#each posts as post}
-				<Card author={post.author} title={post.title} id={post._id}>
-					<div class="">
-						<div class="flex">
-							<span>by&nbsp</span>
-							<a class="underline font-semibold">{post.author}</a>
-						</div>
-						<h2 class="text-xl hover:underline cursor-pointer">{post.title}</h2>
-						<p class="hover:underline cursor-pointer">
-							{post.content.substring(0, 200)}...
-						</p>
-						<p class="text-start">
-							{dateOfPost(new Date(post.createdAt))}
-						</p>
-					</div>
-				</Card>
-			{/each}
+		<div class="flex flex-col gap mt-5 gap-5 mb-5">
+			{#if !posts}
+				<h1 class="text-xl font-semibold ">Loading...</h1>
+			{:else}
+				{#each posts as post}
+					<Transition
+						show={true}
+						enter="transition-opacity duration-500"
+						enterFrom="opacity-0 translate-y-10"
+						enterTo="opacity-100 translate-y-0"
+						leave="transition-opacity duration-300"
+						leaveFrom="opacity-100"
+						leaveTo="opacity-0"
+					>
+						<Card author={post.author} title={post.title} id={post._id}>
+							<div class="">
+								<div class="flex">
+									<span>{$_('postby')}&nbsp</span>
+									<a class="underline font-semibold">{post.author}</a>
+								</div>
+								<h2 class="text-xl hover:underline cursor-pointer">{post.title}</h2>
+								<p class="hover:underline cursor-pointer">
+									{post.content.substring(0, 200)}<span class="hidden md:inline"
+										>{post.content.substring(200, 400)}</span
+									>...
+								</p>
+								<p class="text-start">
+									{dateOfPost(new Date(post.createdAt))}
+								</p>
+							</div>
+						</Card>
+					</Transition>
+				{/each}
+			{/if}
 		</div>
+		<button
+			class="p-4 bg-green-700 bg-opacity-80 hover:translate-y-[0.15rem] hover:bg-opacity-100 transition-all duration-200 ease-in-out text-white shadow-md rounded-md inline-block mb-5"
+			>{$_('loadmore')}</button
+		>
 	</div>
 </div>

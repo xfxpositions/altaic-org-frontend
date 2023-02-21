@@ -10,5 +10,7 @@
 		"title": "What's that?",
 		"content1": "Altaic (/ælˈteɪ.ɪk/) is a controversial proposed language family that would include the Turkic, Mongolic and Tungusic language families and possibly also the Japonic and Koreanic languages."
 	},
-	"home.latestArticlesTitle": "Latest Articles"
+	"home.latestArticlesTitle": "Latest Articles",
+	"postby": "Author",
+	"loadmore": "loadmore"
 }
