@@ -7,8 +7,10 @@
 	import { Transition } from '@rgossiaux/svelte-headlessui';
 	import axios from 'axios';
 	import Card from '../components/Card.svelte';
+	import { load } from './+layout.svelte';
 	export let localChanged;
-
+	let postPage = 0;
+	let totalPosts;
 	/**
 	 * @type {any[]}
 	 */
@@ -20,14 +22,29 @@
 			console.log('Language changed');
 			langChanged = true;
 		});
-		axios.get('http://localhost:7881/multifetch?limit=3').then((response) => {
+		axios.get(`http://localhost:7881/multifetch?limit=3&page=${postPage}`).then((response) => {
 			posts = response.data.result.reverse();
+			totalPosts = response.data.totalPosts;
 			console.log(posts);
 		});
 		onDestroy(() => {
 			unsubscribe();
 		});
 	});
+	async function loadMore() {
+		postPage++;
+		console.log(`http://localhost:7881/multifetch?limit=3&page=${postPage}`);
+		axios.get(`http://localhost:7881/multifetch?limit=3&page=${postPage}`).then((response) => {
+			let data = response.data.result.reverse();
+			totalPosts = response.data.totalPosts;
+			data.forEach((element) => {
+				posts = [...posts, element];
+			});
+			console.log(posts);
+			console.log(postPage);
+		});
+	}
+
 	/**
 	 * @param {Date} date
 	 */
@@ -77,40 +94,33 @@
 			{#if !posts}
 				<h1 class="text-xl font-semibold ">Loading...</h1>
 			{:else}
-				{#each posts as post}
-					<Transition
-						show={true}
-						enter="transition-opacity duration-500"
-						enterFrom="opacity-0 translate-y-10"
-						enterTo="opacity-100 translate-y-0"
-						leave="transition-opacity duration-300"
-						leaveFrom="opacity-100"
-						leaveTo="opacity-0"
-					>
-						<Card author={post.author} title={post.title} id={post._id}>
-							<div class="">
-								<div class="flex">
-									<span>{$_('postby')}&nbsp</span>
-									<a class="underline font-semibold">{post.author}</a>
-								</div>
-								<h2 class="text-xl hover:underline cursor-pointer">{post.title}</h2>
-								<p class="hover:underline cursor-pointer">
-									{post.content.substring(0, 200)}<span class="hidden md:inline"
-										>{post.content.substring(200, 400)}</span
-									>...
-								</p>
-								<p class="text-start">
-									{dateOfPost(new Date(post.createdAt))}
-								</p>
+				{#each posts as post, index}
+					<Card author={post.author} title={post.title} id={post._id} index={index + 1}>
+						<div class="">
+							<div class="flex">
+								<span>{$_('postby')}&nbsp</span>
+								<a class="underline font-semibold">{post.author}</a>
 							</div>
-						</Card>
-					</Transition>
+							<h2 class="text-xl hover:underline cursor-pointer">{post.title}</h2>
+							<p class="hover:underline cursor-pointer">
+								{post.content.substring(0, 200)}<span class="hidden md:inline"
+									>{post.content.substring(200, 400)}</span
+								>...
+							</p>
+							<p class="text-start">
+								{dateOfPost(new Date(post.createdAt))}
+							</p>
+						</div>
+					</Card>
 				{/each}
 			{/if}
 		</div>
 		<button
+			on:click={loadMore}
 			class="p-4 bg-green-700 bg-opacity-80 hover:translate-y-[0.15rem] hover:bg-opacity-100 transition-all duration-200 ease-in-out text-white shadow-md rounded-md inline-block mb-5"
-			>{$_('loadmore')}</button
+			>{posts && Number(totalPosts) == posts.length
+				? 'Wait for new posts!'
+				: $_('loadmore')}</button
 		>
 	</div>
 </div>
