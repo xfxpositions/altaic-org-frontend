@@ -2,7 +2,7 @@
 	let year = new Date().getFullYear();
 </script>
 
-<div class="mt-5">
+<div class="mt-5 footer">
 	<div
 		class="inset-x-0 bottom-0 shadow-lg bg-opacity-20 bg-zinc-100 flex flex-col justify-center items-center"
 	>
@@ -22,3 +22,12 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.footer {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		right: 0;
+	}
+</style>
