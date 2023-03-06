@@ -24,7 +24,7 @@
 </div>
 
 <style>
-	.footer {
+	.footere{
 		position: absolute;
 		left: 0;
 		bottom: 0;
