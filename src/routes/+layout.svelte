@@ -9,8 +9,7 @@
 	import { locale, waitLocale, isLoading } from 'svelte-i18n';
 	import { onMount } from 'svelte';
 	import { get } from 'svelte/store';
-	import { page } from '$app/stores';
-	export const load = async () => {
+	export const loadLang = async () => {
 		if (browser) {
 			locale.set(window.navigator.language);
 		}
@@ -22,7 +21,22 @@
 	 * @type {URL}
 	 */
 
-	load();
+	loadLang();
+	/**
+	 * @type {any}
+	 */
+	let a;
+	// @ts-ignore
+	export function load({ url }) {
+		console.log('URl');
+
+		console.log(url);
+	}
+	import { page } from '$app/stores';
+</script>
+
+<script>
+	console.log($page.url);
 </script>
 
 <div class="bg-solarized-light dark:text-white dark:bg-solarized-dark min-h-screen">

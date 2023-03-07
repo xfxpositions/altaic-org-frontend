@@ -3,12 +3,14 @@
 	 * @type {any}
 	 */
 	export let url;
-	import { fly } from 'svelte/transition';
-	import { Motion } from 'svelte-motion';
+	import { fade } from 'svelte/transition';
+	import Motion from 'svelte-motion/src/motion/MotionSSR.svelte';
+	$: url = url.pathname;
+	import AnimatePresence from 'svelte-motion/src/components/AnimatePresence/AnimatePresence.svelte';
 </script>
 
 {#key url}
-	<Motion
+	<!-- <Motion
 		initial={{ y: 10, opacity: 0 }}
 		animate={{ y: 0, opacity: 1 }}
 		exit={{ y: 0, opacity: 0 }}
@@ -20,8 +22,9 @@
 				<slot />
 			</div>
 		</div></Motion
-	>
-	<!-- <div in:fly={{ x: -10, duration: 500, delay: 500 }} out:fly={{ x: 5, duration: 500 }}>
+	> -->
+
+	<div in:fade={{ duration: 300, delay: 400 }} out:fade={{ duration: 300 }}>
 		<slot />
-	</div> -->
+	</div>
 {/key}

@@ -34,7 +34,7 @@
 			transition={{ duration: 0.5 }}
 			let:motion
 		>
-			<div use:motion class="circle-1">
+			<div use:motion class="circle-1 z-10">
 				<Yin {i} {v} zibidi={initilazed} />
 				<Yang {i} {v} zibidi={initilazed} />
 			</div>
