@@ -39,7 +39,7 @@
 				<Yang {i} {v} zibidi={initilazed} />
 			</div>
 		</Motion>
-		<Elements seen={i == 1} hide={i != 1} />
+		<Elements seen={i == 1} hide={i != 1} {i} />
 	</div>
 </div>
 

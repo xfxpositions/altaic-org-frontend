@@ -8,19 +8,38 @@
 	 * @type {any}
 	 */
 	const variants = {
-		visible: { opacity: 1, x: 0 },
-		hidden: { opacity: 0, x: -500 }
+		hidden: { top: '30px', left: '50px' },
+		visible: { top: '-0px', left: '0px' }
+	};
+	const variants_1 = {
+		hidden: { top: '50px', left: '50px' },
+		visible: { top: '100px', left: '0px' }
+	};
+	const variants_3 = {
+		hidden: { top: '-50px', left: '-50px' },
+		visible: { top: '0px', left: '0px' }
+	};
+	const variants_4 = {
+		hidden: { top: '30px', left: '-50px' },
+		visible: { top: '0px', left: '0px' }
+	};
+	const again = () => {
+		i = i > 0 ? 0 : 1;
 	};
 	export let hide;
+	export let i;
+	$: v = ['hidden', 'visible'][i];
+	$: v_1 = ['hidden', 'visible'][i];
 </script>
 
 <div class="main">
 	<div style="position: absolute">
 		<Motion
 			let:motion
-			animate={seen && { top: '50px', left: '50px' }}
-			exit="{hide && { top: '100px', left: 'unset' }}}"
-			transition={{ duration: 0.5 }}
+			initial="hidden"
+			animate={v}
+			variants={variants_1}
+			transition={{ duration: 0.5, delay: 0.2 }}
 		>
 			<div use:motion class="container-1">
 				<div class="fulstr" />
@@ -34,12 +53,12 @@
 	</div>
 	<Motion
 		let:motion
-		initial={{ top: '50px', left: '50px' }}
-		animate={seen && { top: '0px', left: 'unset' }}
-		exit="{hide && { top: '100px', left: 'unset' }}}"
-		transition={{ duration: 0.5 }}
+		initial="hidden"
+		animate={v}
+		{variants}
+		transition={{ duration: 0.5, delay: 0.1 }}
 	>
-		<div use:motion style="position: absolute;" class="-z-10">
+		<div use:motion style="position: absolute;" class="">
 			<div class="container-2 ">
 				<div class="fulstr" />
 				<div class="fulstr" />
@@ -47,36 +66,51 @@
 			</div>
 		</div>
 	</Motion>
-
-	<div style="position: absolute">
-		<div class="container-3 ">
-			<div class="halfcontainer">
-				<div class="halfstr" />
-				<div class="halfstr" />
-			</div>
-			<div class="halfcontainer">
-				<div class="halfstr" />
-				<div class="halfstr" />
-			</div>
-			<div class="halfcontainer">
-				<div class="halfstr" />
-				<div class="halfstr" />
-			</div>
-		</div>
-	</div>
-	<div style="position: absolute">
-		<div class="container-4">
-			<div class="halfcontainer">
-				<div class="halfstr" />
-				<div class="halfstr" />
-			</div>
-			<div class="fulstr" />
-			<div class="halfcontainer">
-				<div class="halfstr" />
-				<div class="halfstr" />
+	<Motion
+		let:motion
+		initial="hidden"
+		animate={v}
+		variants={variants_3}
+		transition={{ duration: 0.5, delay: 0.3 }}
+	>
+		<div use:motion style="position: absolute">
+			<div class="container-3 ">
+				<div class="halfcontainer">
+					<div class="halfstr" />
+					<div class="halfstr" />
+				</div>
+				<div class="halfcontainer">
+					<div class="halfstr" />
+					<div class="halfstr" />
+				</div>
+				<div class="halfcontainer">
+					<div class="halfstr" />
+					<div class="halfstr" />
+				</div>
 			</div>
 		</div>
-	</div>
+	</Motion>
+	<Motion
+		let:motion
+		initial="hidden"
+		animate={v}
+		variants={variants_4}
+		transition={{ duration: 0.5, delay: 0.4 }}
+	>
+		<div use:motion style="position: absolute">
+			<div class="container-4">
+				<div class="halfcontainer">
+					<div class="halfstr" />
+					<div class="halfstr" />
+				</div>
+				<div class="fulstr" />
+				<div class="halfcontainer">
+					<div class="halfstr" />
+					<div class="halfstr" />
+				</div>
+			</div>
+		</div>
+	</Motion>
 </div>
 
 <style>
