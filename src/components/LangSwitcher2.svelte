@@ -48,13 +48,9 @@
 </script>
 
 <div>
-	<div class="inset-0 flex items-center">
-		<button
-			on:click={openModal}
-			class="transition-all duration-300 ease-in-out hover:bg-solarized-light hover:text-black dark:hover:bg-solarized-dark dark:hover:text-solarized-light p-2 rounded-md border-2 border-zinc-200"
-			>Change Language</button
-		>
-	</div>
+	<this.svelte:element on:click={openModal}>
+		<slot />
+	</this.svelte:element>
 	<TransitionRoot appear show={isOpen}>
 		<Dialog as="div" on:close={closeModal} class="relative z-10 ">
 			<TransitionRoot

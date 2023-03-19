@@ -14,7 +14,8 @@
 	export let v;
 	const variants = {
 		jpn: { scale: 0, translateY: '30px', opacity: 0 },
-		kr: { scale: 1, translateY: '-50px' }
+		kr: { scale: 1, translateY: '-50px' },
+		mon: { scale: 0, translateY: '30px', opacity: 0 }
 	};
 </script>
 

@@ -11,10 +11,11 @@
 	let i = 0;
 	let zibidi = true;
 	let initilazed = false;
-	$: v = ['jpn', 'kr'][i];
+	$: v = ['jpn', 'kr', 'mon'][i];
 
 	const again = () => {
-		i = i > 0 ? 0 : 1;
+		//i = i > 0 ? 0 : 1;
+		i = i > 1 ? 0 : i + 1;
 		zibidi = zibidi ? false : true;
 		console.log(i, zibidi);
 	};
@@ -34,12 +35,12 @@
 			transition={{ duration: 0.5 }}
 			let:motion
 		>
-			<div use:motion class="circle-1 z-10">
+			<div use:motion class="circle-1 z-[1]">
 				<Yin {i} {v} zibidi={initilazed} />
 				<Yang {i} {v} zibidi={initilazed} />
 			</div>
 		</Motion>
-		<Elements seen={i == 1} hide={i != 1} {i} />
+		<Elements {initilazed} seen={i == 1} hide={i != 1} {i} />
 	</div>
 </div>
 
@@ -62,38 +63,7 @@
 		border-radius: 50%;
 		background-color: #bc002d;
 		width: 100px;
-		height: 100px;
-	}
-	.fullstr {
-		background: #000;
-		width: 50px;
-		height: 8px;
-		margin-bottom: 8px;
-	}
-	.halfstr {
-		background: #fff;
-		width: 10px;
-		border-left: solid 11px #000;
-		border-right: solid 11px #000;
-		height: 8px;
-		margin-bottom: 8px;
-	}
-	#strcontainer1 {
-		position: absolute;
-		margin: 0px 200px 0 45px;
-		margin-bottom: 100px;
-		margin-left: 50px;
-		-webkit-transform: rotate(-45deg);
-		-moz-transform: rotate(-45deg);
-		-o-transform: rotate(-45deg);
-		transform: rotate(-45deg);
-	}
-	#strcontainer2 {
-		position: absolute;
-		margin: 175px 0 0 45px;
-		-webkit-transform: rotate(45deg);
-		-moz-transform: rotate(45deg);
-		-o-transform: rotate(45deg);
-		transform: rotate(45deg);
-	}
+		height: 100px;z
+		background-color: #bc002d;
+		}
 </style>

@@ -6,8 +6,9 @@
 	 */
 	export let v;
 	const variants = {
-		jpn: { scale: 0 },
-		kr: { scale: 1 }
+		jpn: { scale: 0, opacity: 0 },
+		kr: { scale: 1 },
+		mon: { scale: 0, translateY: '30px', opacity: 0 }
 	};
 	/**
 	 * @type {any}

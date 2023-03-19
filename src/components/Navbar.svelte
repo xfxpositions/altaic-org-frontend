@@ -15,7 +15,14 @@
 			<Logo />
 			<div>
 				<this.svelte:element class="hidden md:inline-flex gap-3 ">
-					<LangSwitcher2 />
+					<LangSwitcher2>
+						<div class="inset-0 flex items-center">
+							<button
+								class="transition-all duration-300 ease-in-out hover:bg-solarized-light hover:text-black dark:hover:bg-solarized-dark dark:hover:text-solarized-light p-2 rounded-md border-2 border-zinc-200"
+								>Change Language</button
+							>
+						</div>
+					</LangSwitcher2>
 					<ThemeSwitcher2 />
 					<VisitorCounter />
 				</this.svelte:element>

@@ -4,24 +4,25 @@
 	 * @type {any}
 	 */
 	export let seen;
+	export let initilazed;
 	/**
 	 * @type {any}
 	 */
 	const variants = {
-		hidden: { top: '30px', left: '50px' },
-		visible: { top: '-0px', left: '0px' }
+		hidden: { top: '0px', left: '0px' },
+		visible: { top: '-30px', left: '-50px' }
 	};
 	const variants_1 = {
 		hidden: { top: '50px', left: '50px' },
 		visible: { top: '100px', left: '0px' }
 	};
 	const variants_3 = {
-		hidden: { top: '-50px', left: '-50px' },
-		visible: { top: '0px', left: '0px' }
+		hidden: { top: '0px', left: '0px' },
+		visible: { top: '50px', left: '50px' }
 	};
 	const variants_4 = {
-		hidden: { top: '30px', left: '-50px' },
-		visible: { top: '0px', left: '0px' }
+		hidden: { top: '0px', left: '0px' },
+		visible: { top: '-30px', left: '50px' }
 	};
 	const again = () => {
 		i = i > 0 ? 0 : 1;
@@ -41,7 +42,7 @@
 			variants={variants_1}
 			transition={{ duration: 0.5, delay: 0.2 }}
 		>
-			<div use:motion class="container-1">
+			<div use:motion class="container-1 transition-opacity {!initilazed && 'hidden'}">
 				<div class="fulstr" />
 				<div class="halfcontainer">
 					<div class="halfstr" />
@@ -131,7 +132,8 @@
 		-o-transform: rotate(45deg);
 		transform: rotate(45deg);
 		position: relative;
-		top: 100px;
+		top: 50px;
+		left: 50px;
 	}
 	.container-2 {
 		display: flex;
@@ -142,7 +144,8 @@
 		-o-transform: rotate(45deg);
 		transform: rotate(-45deg);
 		position: relative;
-		top: 20px;
+		top: 50px;
+		left: 50px;
 	}
 	.container-3 {
 		display: flex;
@@ -153,8 +156,8 @@
 		-o-transform: rotate(45deg);
 		transform: rotate(-45deg);
 		position: relative;
-		top: 100px;
-		left: 100px;
+		top: 50px;
+		left: 50px;
 	}
 	.container-4 {
 		display: flex;
@@ -165,9 +168,13 @@
 		-o-transform: rotate(45deg);
 		transform: rotate(45deg);
 		position: relative;
-		left: 100px;
+		left: 50px;
 		position: relative;
-		top: 20px;
+		top: 50px;
+		/* animation-name: useOpacity;
+		animation-duration: 1ms;
+		animation-delay: 500ms;
+		animation-timing-function: ease; */
 	}
 	.fulstr {
 		width: 22px;
@@ -192,5 +199,13 @@
 		position: relative;
 		left: 50px;
 		top: 50px;
+	}
+	@keyframes useOpacity {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
 	}
 </style>

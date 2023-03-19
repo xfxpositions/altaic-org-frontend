@@ -13,6 +13,7 @@
 			disabled && 'cursor-not-allowed opacity-50'
 		);
 	}
+	import LangSwitcher2 from '../LangSwitcher2.svelte';
 </script>
 
 <div class="flex justify-center">
@@ -37,9 +38,15 @@
 				<MenuItems
 					class="bg-opacity-100 backdrop-blur-[2px] absolute right-0 w-56 mt-2 origin-top-right bg-zinc-100 dark:bg-solarized-dark dark:text-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
 				>
+					<LangSwitcher2>
+						<div class="inset-0 flex items-center">
+							<button
+								class="transition-all duration-300 ease-in-out hover:bg-solarized-light hover:text-black dark:hover:bg-solarized-dark dark:hover:text-solarized-light p-2 rounded-md border-2 border-zinc-200"
+								>Change Language</button
+							>
+						</div>
+					</LangSwitcher2>
 					<div class="py-1">
-						<MenuItem as="a" href="#account-settings" class={resolveClass}>Change Language</MenuItem
-						>
 						<MenuItem as="a" href="#support" class={resolveClass}>Change Theme</MenuItem>
 
 						<MenuItem as="a" href="#license" class={resolveClass}>Total Visitors:</MenuItem>
